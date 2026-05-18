@@ -130,14 +130,14 @@ body {
 
 /* KÖZÖS HEADER STÍLUSOK */
 .header h1 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: var(--primary);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   background: linear-gradient(90deg, #06b6d4, #3b82f6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
@@ -201,7 +201,7 @@ body {
 .highlight-frame.hidden { display: none; }
 
 .highlight-label {
-  font-size: 1.75rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--highlight-text);
   white-space: pre-line;
@@ -222,8 +222,8 @@ body {
 
 table { width: 100%; border-collapse: collapse; text-align: center; }
 thead { position: sticky; top: 0; background-color: var(--primary); z-index: 10; }
-th { color: #fff; padding: 16px; text-transform: uppercase; }
-td { padding: 14px; border-bottom: 1px solid var(--border-color); }
+th { color: #fff; font-weight: 600; font-size: 1.05rem; padding: 12px; letter-spacing: 0.05em; text-transform: uppercase; }
+td { padding: 12px; border-bottom: 1px solid var(--border-color); font-size: 1.05rem; }
 tbody tr:nth-child(even) { background-color: rgba(255, 255, 255, 0.02); }
 tbody tr:hover { background-color: rgba(8, 145, 178, 0.15); }
 
