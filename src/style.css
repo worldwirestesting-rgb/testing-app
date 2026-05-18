@@ -414,6 +414,7 @@ tbody tr:hover { background-color: rgba(8, 145, 178, 0.15); }
 .status-msg.loading { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid #3b82f6; }
 
 @media (max-width: 600px) {
+  .app-header { flex-direction: column; }
   .header h1 { font-size: 2rem; }
   .btn-nav { position: static; margin-bottom: 15px; display: inline-block; }
 }
