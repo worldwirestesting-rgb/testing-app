@@ -222,8 +222,8 @@ body {
 
 table { width: 100%; border-collapse: collapse; text-align: center; }
 thead { position: sticky; top: 0; background-color: var(--primary); z-index: 10; }
-th { color: #fff; font-weight: 600; font-size: 1.05rem; padding: 12px; letter-spacing: 0.05em; text-transform: uppercase; }
-td { padding: 12px; border-bottom: 1px solid var(--border-color); font-size: 1.05rem; }
+th { color: #fff; font-weight: 600; font-size: 1rem; padding: 10px 4px; letter-spacing: 0.02em; text-transform: uppercase; }
+td { padding: 10px 4px; border-bottom: 1px solid var(--border-color); font-size: 1rem; white-space: nowrap; }
 tbody tr:nth-child(even) { background-color: rgba(255, 255, 255, 0.02); }
 tbody tr:hover { background-color: rgba(8, 145, 178, 0.15); }
 
@@ -417,4 +417,6 @@ tbody tr:hover { background-color: rgba(8, 145, 178, 0.15); }
   .app-header { flex-direction: column; }
   .header h1 { font-size: 2rem; }
   .btn-nav { position: static; margin-bottom: 15px; display: inline-block; }
+  th, td { font-size: 0.85rem; padding: 8px 2px; }
+  .highlight-label { font-size: 1.2rem; }
 }
