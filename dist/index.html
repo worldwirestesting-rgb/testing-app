@@ -4,49 +4,137 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#0f172a" />
-  <meta name="description" content="Pin Kereső PWA Web App" />
-  <title>Pin Kereső</title>
+  <meta name="description" content="Weetech PWA App Launcher" />
+  <title>App Launcher</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="manifest" href="/manifest.json" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-CeeutXu6.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CXSmom73.css">
+  <script type="module" crossorigin src="/assets/index-17XBPffr.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DEmmNJcV.css">
 </head>
 <body>
   <div id="app">
-    <header class="header">
-      <h1>Pin Kereső</h1>
-      <p class="subtitle">Gyors és egyszerű csatlakozó pin azonosítás</p>
-    </header>
-
-    <main class="container">
-      <div class="search-container">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" placeholder="Keresés (pl. 65 vagy 2.1)..." autocomplete="off" />
-        <button id="clearBtn" class="clear-btn" aria-label="Törlés" style="display: none;">✕</button>
+    
+    <!-- KEZDŐKÉPERNYŐ (LAUNCHER) -->
+    <div id="launcher-view" class="view active">
+      <header class="header">
+        <h1>Üdvözöllek!</h1>
+        <p class="subtitle">Válassz egy alkalmazást az induláshoz</p>
+      </header>
+      
+      <div class="app-grid">
+        <button class="app-card" id="btn-open-pin">
+          <div class="app-icon">🔍</div>
+          <div class="app-title">Pin Kereső</div>
+          <div class="app-desc">Gyors csatlakozó pin azonosítás</div>
+        </button>
+        
+        <button class="app-card" id="btn-open-resizer">
+          <div class="app-icon">🖼️</div>
+          <div class="app-title">Kép Méretező</div>
+          <div class="app-desc">Kép tömörítése és hálózati feltöltése</div>
+        </button>
       </div>
+    </div>
 
-      <div id="highlightFrame" class="highlight-frame hidden">
-        <div id="highlightLabel" class="highlight-label"></div>
-      </div>
+    <!-- PIN KERESŐ -->
+    <div id="pin-view" class="view hidden">
+      <header class="header app-header">
+        <button class="back-btn btn-nav">← Vissza</button>
+        <div class="header-titles">
+          <h1>Pin Kereső</h1>
+          <p class="subtitle">Gyors és egyszerű csatlakozó pin azonosítás</p>
+        </div>
+      </header>
 
-      <div class="table-container">
-        <table id="pinTable">
-          <thead>
-            <tr>
-              <th>Sorszám</th>
-              <th>Csatlakozó.Pin</th>
-              <th>IP Info</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-            <!-- Table rows will be generated here by JavaScript -->
-          </tbody>
-        </table>
-      </div>
-    </main>
+      <main class="container">
+        <div class="search-container">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Keresés (pl. 65 vagy 2.1)..." autocomplete="off" />
+          <button id="clearBtn" class="clear-btn" aria-label="Törlés" style="display: none;">✕</button>
+        </div>
+
+        <div id="highlightFrame" class="highlight-frame hidden">
+          <div id="highlightLabel" class="highlight-label"></div>
+        </div>
+
+        <div class="table-container">
+          <table id="pinTable">
+            <thead>
+              <tr>
+                <th>Sorszám</th>
+                <th>Csatlakozó.Pin</th>
+                <th>IP Info</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <!-- JS generálja -->
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <!-- IMAGE RESIZER -->
+    <div id="resizer-view" class="view hidden">
+      <header class="header app-header">
+        <button class="back-btn btn-nav">← Vissza</button>
+        <div class="header-titles">
+          <h1>Kép Méretező</h1>
+          <p class="subtitle">JPG képek méretezése és feltöltése a hálózatra</p>
+        </div>
+      </header>
+
+      <main class="container resizer-container">
+        <div class="upload-box" id="upload-box">
+          <div class="upload-icon">📸</div>
+          <h3 id="file-name">Kattints ide egy JPEG fájl kiválasztásához</h3>
+          <p class="upload-hint">Vagy készíts egy fotót a kameráddal!</p>
+          <input type="file" id="file-input" accept="image/jpeg, image/jpg" class="hidden-input" />
+        </div>
+        
+        <div class="settings-box">
+          <div class="profile-header">
+            <label for="profile-select">Aktív Szerver Profil:</label>
+            <button id="btn-new-profile" class="btn-small">+ Új Profil</button>
+          </div>
+          <div class="profile-controls">
+            <select id="profile-select" class="settings-input">
+              <!-- JS fogja feltölteni -->
+            </select>
+            <button id="btn-delete-profile" class="btn-small btn-danger">Törlés</button>
+          </div>
+          
+          <div style="margin-top: 10px;">
+            <label for="image-width-input" style="font-size: 0.9rem; color: var(--text-muted); display: block; margin-bottom: 5px;">Kép szélessége (px):</label>
+            <input type="number" id="image-width-input" class="settings-input" value="800" min="100" max="4000" />
+          </div>
+          
+          <!-- Új Profil Űrlap (Rejtett alapból) -->
+          <div id="new-profile-form" class="new-profile-form hidden">
+            <h4>Új Profil Hozzáadása</h4>
+            <input type="text" id="new-prof-name" class="settings-input" placeholder="Profil neve (pl. Weetech Fő)" />
+            <input type="text" id="new-prof-ip" class="settings-input" placeholder="Backend IP (pl. 192.168.1.5)" />
+            <input type="text" id="new-prof-path" class="settings-input" placeholder="Cél Mappa (pl. \\10.0.0.220\weetech images)" />
+            <div class="form-actions">
+              <button id="btn-save-profile" class="btn-small btn-success">Mentés</button>
+              <button id="btn-cancel-profile" class="btn-small">Mégse</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="preview-container" class="preview-container hidden">
+          <img id="image-preview" src="" alt="Előnézet" />
+        </div>
+
+        <button id="btn-process-upload" class="primary-btn disabled" disabled>Átméretezés és Feltöltés (10.0.0.220)</button>
+        
+        <div id="resizer-status" class="status-msg hidden"></div>
+      </main>
+    </div>
+
   </div>
 
   
@@ -54,12 +142,8 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js')
-          .then(registration => {
-            console.log('Service Worker regisztrálva:', registration);
-          })
-          .catch(error => {
-            console.log('Service Worker hiba:', error);
-          });
+          .then(registration => console.log('SW regisztrálva'))
+          .catch(err => console.log('SW hiba:', err));
       });
     }
   </script>

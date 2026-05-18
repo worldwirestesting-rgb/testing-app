@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pin-table-pwa-cache-v1';
+const CACHE_NAME = 'weetech-pwa-cache-v4';
 const urlsToCache = [
   '/',
   '/index.html',
