@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="Pin Kereső PWA Web App" />
+  <title>Pin Kereső</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1>Pin Kereső</h1>
+      <p class="subtitle">Gyors és egyszerű csatlakozó pin azonosítás</p>
+    </header>
+
+    <main class="container">
+      <div class="search-container">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Keresés (pl. 65 vagy 2.1)..." autocomplete="off" />
+        <button id="clearBtn" class="clear-btn" aria-label="Törlés" style="display: none;">✕</button>
+      </div>
+
+      <div id="highlightFrame" class="highlight-frame hidden">
+        <div id="highlightLabel" class="highlight-label"></div>
+      </div>
+
+      <div class="table-container">
+        <table id="pinTable">
+          <thead>
+            <tr>
+              <th>Sorszám</th>
+              <th>Csatlakozó.Pin</th>
+              <th>IP Info</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Table rows will be generated here by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+  
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('Service Worker regisztrálva:', registration);
+          })
+          .catch(error => {
+            console.log('Service Worker hiba:', error);
+          });
+      });
+    }
+  </script>
+</body>
+</html>

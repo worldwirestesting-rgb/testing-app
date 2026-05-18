@@ -1,0 +1,16 @@
+{
+  "name": "Pin Kereső PWA",
+  "short_name": "Pin Kereső",
+  "description": "Gyors és egyszerű csatlakozó pin azonosítás PWA",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
